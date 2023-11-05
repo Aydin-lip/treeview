@@ -1,0 +1,403 @@
+body {
+  padding: 50px;
+  font-family: 'Arial', sans-serif;
+  direction: rtl;
+}
+
+ul,
+li {
+  margin: 0;
+  padding: 0;
+}
+
+.tree ul {
+  margin-right: 20px;
+  user-select: none;
+}
+
+.tree li {
+  list-style-type: none;
+  margin: 10px;
+  position: relative;
+  user-select: none;
+  font-weight: 700;
+}
+
+.tree li .content {
+  display: flex;
+  align-items: center;
+}
+
+.tree li::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  right: -20px;
+  border-right: 2px solid #ccc;
+  border-bottom: 2px solid #ccc;
+  border-radius: 0 0 0 0px;
+  width: 0;
+  height: 0;
+  transition: all ease .3s;
+}
+
+.tree li::after {
+  position: absolute;
+  content: "";
+  top: 12px;
+  right: -20px;
+  border-right: 2px solid #ccc;
+  border-top: 2px solid #ccc;
+  border-radius: 0px 0 0 0;
+  width: 0;
+  height: 0;
+  transition: all ease .3s;
+}
+
+.tree .openChart::before {
+  width: 20px;
+  height: 22px;
+}
+
+.tree .openChart::after {
+  width: 20px;
+  height: 100%;
+}
+
+.tree .new::before {
+  top: -10px;
+  height: 20px;
+  width: 20px;
+}
+
+.tree .new::after {
+  top: 12px;
+}
+
+.tree li:last-child::after {
+  display: none;
+}
+
+.tree li:last-child:before {
+  border-radius: 0 0 5px 0;
+}
+
+ul.tree>li:first-child::before {
+  display: none;
+}
+
+ul.tree>li:first-child::after {
+  border-radius: 0 5px 0 0;
+}
+
+.tree li a {
+  border: 1px #ccc solid;
+  border-radius: 5px;
+  padding: 0.2rem 0.5rem;
+  background: #f8f8f8;
+}
+
+.tree li a:hover,
+.tree li a:hover+ul li a,
+.tree li a:focus,
+.tree li a:focus+ul li a {
+  background: #ccc;
+  color: #000;
+  border: 1px solid #000;
+}
+
+.tree li input {
+  width: 7rem;
+  font-size: 1rem;
+  border-radius: 0 .2rem .2rem 0;
+  padding: 0.2rem 0.5rem;
+  outline: none;
+  font-weight: 700;
+}
+
+.arrow-btn {
+  border: none;
+  border-radius: 0.2rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+  z-index: 4;
+  position: sticky;
+  margin-left: 0.6rem;
+  margin-right: -1.7rem;
+  padding: 0.2rem;
+  width: 1.1rem;
+  height: 1.1rem;
+  border: 1px solid #d0d0d0;
+}
+
+.open {
+  border: 1px solid blue;
+  background: #dedeff;
+}
+
+.arrow-btn::after {
+  content: "";
+  position: absolute;
+  width: 0.6rem;
+  height: 0.15rem;
+  background: black;
+  top: 6px;
+  right: 3px;
+  width: 70%;
+  height: 15%;
+}
+
+.close::before {
+  content: "";
+  position: absolute;
+  width: 0.6rem;
+  height: 0.12rem;
+  background: black;
+  top: 6px;
+  right: 3px;
+  rotate: 90deg;
+  width: 70%;
+  height: 15%;
+}
+
+.more svg {
+  width: 1.2rem;
+  margin-right: .5rem;
+}
+
+.add-btn {
+  border: none;
+  border-radius: 0.3rem;
+  padding: 0.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  cursor: pointer;
+  padding: 0.3rem 0.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.add-btn svg {
+  width: 1.3rem;
+}
+
+.action {
+  display: flex;
+  gap: 0.3rem;
+  margin-right: 0.5rem;
+}
+
+.action button {
+  border: none;
+  padding: 0;
+  background: transparent;
+}
+
+.action span {
+  display: flex;
+  cursor: pointer;
+}
+
+.action span svg {
+  width: 1.4rem;
+}
+
+.new-chart {
+  display: flex;
+  align-items: center;
+}
+
+.more-action {
+  display: flex;
+  margin-right: 0.2rem;
+  transition: all ease .2s;
+  padding: 0.1rem;
+  position: relative;
+  cursor: pointer;
+}
+
+.more-action svg {
+  width: 1.3rem;
+}
+
+.more-action:hover {
+  background: #e8e8e8;
+  border-radius: 0.3rem;
+}
+
+.dropdown {
+  background: #f0f0f0;
+  position: absolute;
+  top: -0.5rem;
+  right: 2rem;
+  border-radius: 0.3rem;
+  padding: 0.5rem 1rem;
+  box-shadow: 0px 0px 8px #a2a2a2;
+  z-index: 6;
+}
+
+
+.items {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.items div {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.items svg {
+  width: 1.3rem;
+  cursor: pointer;
+}
+
+.items .add:hover {
+  color: green;
+}
+
+.items .edit:hover {
+  color: blue;
+}
+
+.items .delete:hover {
+  color: red;
+}
+
+.date-box {
+  position: relative;
+  display: flex;
+}
+
+.date-box .data-input {
+  padding-left: 1.5rem;
+  width: 5.5rem;
+  border-radius: 0.2rem 0 0 0.2rem;
+}
+
+.date-box span {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  padding: 0.2rem;
+}
+
+.undelete {
+  text-decoration: underline;
+  color: blue;
+}
+
+.delChart {
+  margin-right: -2rem;
+  position: sticky;
+  color: red;
+  border-color: red;
+  background-color: #ff000044;
+  opacity: 0;
+  transition: all ease .5s;
+}
+
+.find-node {
+  border-color: green;
+  color: green;
+  background: #43ff4341;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.header form {
+  position: relative;
+}
+
+.header input {
+  font-size: 1rem;
+  padding: 0.4rem 1rem;
+  border-radius: 0.3rem;
+  width: 10rem;
+  padding-left: 4rem;
+  outline: none;
+  font-weight: 700;
+}
+
+.header form .utils {
+  position: absolute;
+  top: 0;
+  left: 0rem;
+  bottom: 0;
+  border-radius: 0.3rem 0 0 0.3rem;
+  display: flex;
+  align-items: center;
+}
+
+.header form .search-btn {
+  border-radius: 0.3rem 0 0 0.3rem;
+  border-right: 1px solid #ccc;
+  cursor: pointer;
+  height: 100%;
+}
+
+.header form .search-btn svg {
+  width: 1.3rem;
+}
+
+.search_items {
+  position: absolute;
+  bottom: -2rem;
+  right: 0.5rem;
+  background: #474747;
+  color: white;
+  padding: 0.2rem 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  border-radius: 0.3rem;
+}
+
+.plusIndex {
+  padding: 0 0 0 0.5rem;
+  cursor: pointer;
+}
+
+.minexIndex {
+  padding: 0 0 0 0.5rem;
+  cursor: pointer;
+}
+
+.disabled {
+  cursor: default;
+  color: #d2d2d2;
+}
+
+.search_items .counter {
+  direction: ltr;
+  font-size: 0.8rem;
+  margin: auto;
+}
+
+.utils .clear-btn {
+  border: none;
+  background: none;
+  height: 100%;
+  cursor: pointer;
+  display: flex;
+  padding: 0 0.4rem;
+}
+
+.clear-btn svg {
+  width: 1rem;
+}
+
+.search-active {
+  color: green !important;
+  border-color: green !important;
+  background: #d6ffd6 !important;
+}
